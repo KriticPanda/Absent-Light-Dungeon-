@@ -4,25 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./scr/enemy.js"></script>
-    <script src="./scr/maingame.js"></script>
-    <script src="./scr/player.js"></script>
+
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
-    <div class="title-screen">
+    <div id="title-screen">
       <header>
         <h1>Absent Light Dungeon</h1>
       </header>
-     
 
       <div id="play-button">
         <input type="button" value="Play Now!" />
       </div>
     </div>
 
-    <div class = "game-screen">
-        <div></div>
+    <div id="game-screen">
+      <div id="game-box"></div>
     </div>
+
+    <div id="end-screen">
+      <div></div>
+    </div>
+
+    <script src="./scr/maingame.js"></script>
+    <script src="./scr/player.js"></script>
+    <script src="./scr/enemy.js"></script>
   </body>
 </html>
