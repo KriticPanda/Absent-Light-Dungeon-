@@ -3,8 +3,14 @@ const playButton = document.getElementById("play-button");
 const startScreen = document.getElementById("title-screen");
 const gameScreen = document.getElementById("game-screen");
 const gameBoxNode = document.getElementById("game-box");
+const endScreen = document.getElementById("end-screen");
 
+//Global Variables
 let playerObj = null;
+let enemiesArray = [];
+let mainIntervalID = null;
+let enemyIntervalID = null;
+let playerScore = null;
 
 //Main game function
 function gameStart() {
@@ -12,10 +18,28 @@ function gameStart() {
   gameScreen.style.display = "flex";
 
   addPlayer();
+  addEnemy();
+
+  //main game interval
+  mainIntervalID = setInterval(gameLoop, Math.round(1000 / 60));
+
+  //starting other intervals
+  enemyIntervalID = setInterval(addEnemy, 2000);
+}
+function gameLoop() {
+  enemiesArray.forEach((enemy) => {
+    enemy.automaticMovement();
+  });
 }
 
 function addPlayer() {
   playerObj = new Player();
+}
+
+function addEnemy() {
+  let randomPosY = Math.floor(Math.random() * 530);
+  let newEnemy = new Enemy(randomPosY);
+  enemiesArray.push(newEnemy);
 }
 
 //Event Listeners

@@ -51,7 +51,7 @@ body {
   text-align: center;
 }
 #game-screen {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   background-image: url(../img/game-screen-image.png);
@@ -67,7 +67,7 @@ body {
   width: 900px;
   height: 600px;
   background-color: white;
-
+  overflow: hidden;
   border-radius: 5px;
 }
 
