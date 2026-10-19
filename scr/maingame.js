@@ -4,6 +4,7 @@ const startScreen = document.getElementById("title-screen");
 const gameScreen = document.getElementById("game-screen");
 const gameBoxNode = document.getElementById("game-box");
 const endScreen = document.getElementById("end-screen");
+const retryButton = document.getElementById("end-btn");
 
 //Global Variables
 let playerObj = null;
@@ -15,7 +16,12 @@ let playerScore = null;
 //Main game function
 function gameStart() {
   startScreen.style.display = "none";
+  endScreen.style.display = "none";
   gameScreen.style.display = "flex";
+  enemiesArray.forEach((enemy) => {
+    enemy.node.remove();
+  });
+  enemiesArray = [];
 
   addPlayer();
   addEnemy();
@@ -30,6 +36,8 @@ function gameLoop() {
   enemiesArray.forEach((enemy) => {
     enemy.automaticMovement();
   });
+  checkEnemyDespawn();
+  checkCollisionPlayerEnemy();
 }
 
 function addPlayer() {
@@ -41,9 +49,47 @@ function addEnemy() {
   let newEnemy = new Enemy(randomPosY);
   enemiesArray.push(newEnemy);
 }
+function checkCollision(element1, element2) {
+  return (
+    element1.x < element2.x + element2.width &&
+    element1.x + element1.width > element2.x &&
+    element1.y < element2.y + element2.height &&
+    element1.y + element1.height > element2.y
+  );
+}
+function checkCollisionPlayerEnemy() {
+  enemiesArray.forEach((enemy) => {
+    if (checkCollision(enemy, playerObj)) {
+      console.log("GAME OVER!");
+      gameOver();
+    }
+  });
+}
+
+function checkEnemyDespawn() {
+  if (enemiesArray[0] && enemiesArray[0].x < -100) {
+    // TWO actions need to happen when removing an element from the game
+    enemiesArray[0].node.remove(); //remove it from the DOM
+
+    enemiesArray.shift(); //remove it from JavaScript
+  }
+}
+
+function gameOver() {
+  //STOP all intervals
+  clearInterval(mainIntervalID);
+  clearInterval(enemyIntervalID);
+  playerObj.node.remove();
+
+  //change screens
+
+  gameScreen.style.display = "none";
+  endScreen.style.display = "flex";
+}
 
 //Event Listeners
 playButton.addEventListener("click", gameStart);
+retryButton.addEventListener("click", gameStart);
 
 window.addEventListener("keydown", (event) => {
   if (event.code === "ArrowUp") {
