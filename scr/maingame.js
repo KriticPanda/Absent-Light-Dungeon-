@@ -5,13 +5,16 @@ const gameScreen = document.getElementById("game-screen");
 const gameBoxNode = document.getElementById("game-box");
 const endScreen = document.getElementById("end-screen");
 const retryButton = document.getElementById("end-btn");
+const scoreTracker = document.getElementById("score");
 
 //Global Variables
 let playerObj = null;
 let enemiesArray = [];
 let mainIntervalID = null;
 let enemyIntervalID = null;
-let playerScore = null;
+let goldLoot = [];
+let goldIntervalID = null;
+let scoreCounter = null;
 
 //Main game function
 function gameStart() {
@@ -23,14 +26,24 @@ function gameStart() {
   });
   enemiesArray = [];
 
+  goldLoot.forEach((gold) => {
+    gold.node.remove();
+  });
+  goldLoot = [];
+
+  scoreCounter = 0;
+  scoreTracker.innerText = `Your current gold:${scoreCounter}`;
+
   addPlayer();
   addEnemy();
+  addGold();
 
   //main game interval
   mainIntervalID = setInterval(gameLoop, Math.round(1000 / 60));
 
   //starting other intervals
   enemyIntervalID = setInterval(addEnemy, 2000);
+  goldIntervalID = setInterval(addGold, 5000);
 }
 function gameLoop() {
   enemiesArray.forEach((enemy) => {
@@ -38,6 +51,8 @@ function gameLoop() {
   });
   checkEnemyDespawn();
   checkCollisionPlayerEnemy();
+  checkCollisionGoldEnemy();
+  checkCollisionGoldPlayer();
 }
 
 function addPlayer() {
@@ -48,6 +63,13 @@ function addEnemy() {
   let randomPosY = Math.floor(Math.random() * 530);
   let newEnemy = new Enemy(randomPosY);
   enemiesArray.push(newEnemy);
+}
+
+function addGold() {
+  let randomGPosy = Math.floor(Math.random() * 800);
+  let randomGPosX = Math.floor(Math.random() * 500);
+  let newGold = new Gold(randomGPosX, randomGPosy);
+  goldLoot.push(newGold);
 }
 function checkCollision(element1, element2) {
   return (
@@ -66,12 +88,36 @@ function checkCollisionPlayerEnemy() {
   });
 }
 
+function checkCollisionGoldEnemy() {
+  for (let i = goldLoot.length - 1; i >= 0; i--) {
+    let currentGold = goldLoot[i];
+
+    enemiesArray.forEach((enemy) => {
+      if (checkCollision(enemy, currentGold)) {
+        currentGold.node.remove();
+      }
+    });
+  }
+}
+
+function checkCollisionGoldPlayer() {
+  for (let i = goldLoot.length - 1; i >= 0; i--) {
+    let currentGold = goldLoot[i];
+
+    if (checkCollision(playerObj, currentGold)) {
+      currentGold.node.remove();
+      goldLoot.splice(i, 1);
+      scoreCounter += 10; //
+      scoreTracker.innerText = `Your current gold:${scoreCounter}`;
+    }
+  }
+}
+
 function checkEnemyDespawn() {
   if (enemiesArray[0] && enemiesArray[0].x < -100) {
-    // TWO actions need to happen when removing an element from the game
-    enemiesArray[0].node.remove(); //remove it from the DOM
+    enemiesArray[0].node.remove();
 
-    enemiesArray.shift(); //remove it from JavaScript
+    enemiesArray.shift();
   }
 }
 
