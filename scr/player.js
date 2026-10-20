@@ -13,10 +13,11 @@ class Player {
     this.node.style.left = `${this.x}px`;
 
     // Shape and style
+    this.node.style.padding = `0px`;
     this.node.style.width = `${this.width}px`;
     this.node.style.height = `${this.height}px`;
     this.node.style.backgroundImage =
-      "url('./../img/Knight/rotations/east.png')";
+      "url('./../img/Knight/rotations/east_idle.webp')";
     this.node.style.backgroundSize = "cover"; // Garante que a imagem cabe toda na div
     this.node.style.backgroundRepeat = "no-repeat"; // Evita que a imagem se repita
     this.node.style.backgroundPosition = "center";
@@ -43,6 +44,8 @@ class Player {
     }
     this.x -= this.speed;
     this.node.style.left = `${this.x}px`;
+    this.node.style.backgroundImage =
+      "url('../img/Knight/rotations/west_front_walk_walk.webp')";
   }
 
   moveRight() {
@@ -51,5 +54,15 @@ class Player {
     }
     this.x += this.speed;
     this.node.style.left = `${this.x}px`;
+    this.node.style.backgroundImage =
+      "url('../img/Knight/rotations/east_front_walk_walk.webp')";
+  }
+  stopRight() {
+    this.node.style.backgroundImage =
+      "url('./../img/Knight/rotations/east_idle.webp')";
+  }
+  stopLeft() {
+    this.node.style.backgroundImage =
+      "url('./../img/Knight/rotations/west_idle.webp')";
   }
 }

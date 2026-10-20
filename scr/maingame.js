@@ -43,7 +43,7 @@ function gameStart() {
 
   //starting other intervals
   enemyIntervalID = setInterval(addEnemy, 2000);
-  goldIntervalID = setInterval(addGold, 5000);
+  goldIntervalID = setInterval(addGold, 6000);
 }
 function gameLoop() {
   enemiesArray.forEach((enemy) => {
@@ -82,7 +82,6 @@ function checkCollision(element1, element2) {
 function checkCollisionPlayerEnemy() {
   enemiesArray.forEach((enemy) => {
     if (checkCollision(enemy, playerObj)) {
-      console.log("GAME OVER!");
       gameOver();
     }
   });
@@ -149,4 +148,11 @@ window.addEventListener("keydown", (event) => {
   } else if (event.code === "ArrowRight") {
     playerObj.moveRight();
   }
+  window.addEventListener("keyup", (event) => {
+    if (event.key === "ArrowRight" || event.key === "d") {
+      playerObj.stopRight(); // Chama a função que criámos acima para voltar ao idle
+    } else if (event.code === "ArrowLeft") {
+      playerObj.stopLeft();
+    }
+  });
 });
