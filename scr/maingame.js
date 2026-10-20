@@ -153,6 +153,10 @@ window.addEventListener("keydown", (event) => {
       playerObj.stopRight(); // Chama a função que criámos acima para voltar ao idle
     } else if (event.code === "ArrowLeft") {
       playerObj.stopLeft();
+    } else if (event.code === "ArrowDown") {
+      playerObj.stopDown();
+    } else if (event.code === "ArrowUp") {
+      playerObj.stopUp();
     }
   });
 });
