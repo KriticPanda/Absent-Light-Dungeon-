@@ -60,13 +60,13 @@ function addPlayer() {
 }
 
 function addEnemy() {
-  let randomPosY = Math.floor(Math.random() * 530);
+  let randomPosY = Math.floor(Math.random() * 261) + 270;
   let newEnemy = new Enemy(randomPosY);
   enemiesArray.push(newEnemy);
 }
 
 function addGold() {
-  let randomGPosy = Math.floor(Math.random() * 800);
+  let randomGPosy = Math.floor(Math.random() * 201) + 330;
   let randomGPosX = Math.floor(Math.random() * 500);
   let newGold = new Gold(randomGPosX, randomGPosy);
   goldLoot.push(newGold);

@@ -1,0 +1,36 @@
+{
+  "group_id": "eccd72d9-8526-42f6-a0d0-c7411d5db5c1",
+  "states": [
+    {
+      "character": {
+        "id": "0f9f7309-76c6-4b63-b5bd-6c0ae723e6b3",
+        "name": "Idle",
+        "prompt": "make a goblin in the same style",
+        "size": {
+          "width": 48,
+          "height": 48
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-20T08:05:43.807786+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-10-20T08:09:11.993471"
+}

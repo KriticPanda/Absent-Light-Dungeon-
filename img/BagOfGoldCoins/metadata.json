@@ -1,0 +1,22 @@
+{
+  "group_id": "aaee2aca-3135-45d4-9ceb-0d7930fb30eb",
+  "objects": [
+    {
+      "id": "3f87a2a5-ec32-4805-8370-ac8074286fec",
+      "name": "base",
+      "prompt": "A small bag of gold coins",
+      "size": {
+        "width": 32,
+        "height": 32
+      },
+      "directions": 1,
+      "view": "low top-down",
+      "rotations": {
+        "unknown": "rotations/A_small_bag_of_gold_coins.png"
+      },
+      "animations": {}
+    }
+  ],
+  "export_version": "1.1",
+  "export_date": "2026-10-20T08:18:38.078945"
+}

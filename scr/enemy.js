@@ -8,8 +8,8 @@ class Enemy {
     //position and dimensions
     this.x = 820;
     this.y = posY;
-    this.width = 50;
-    this.height = 50;
+    this.width = 40;
+    this.height = 70;
     this.node.style.position = "absolute";
     this.node.style.top = `${this.y}px`;
     this.node.style.left = `${this.x}px`;
@@ -18,9 +18,11 @@ class Enemy {
 
     this.node.style.width = `${this.width}px`;
     this.node.style.height = `${this.height}px`;
-    this.node.style.backgroundColor = "red";
-    this.node.style.borderRadius = "5px";
-    this.node.style.border = "solid white 3px";
+    this.node.style.backgroundImage =
+      "url('../img/Goblin/Idle/rotations/west.png')";
+    this.node.style.backgroundSize = "cover"; // Garante que a imagem cabe toda na div
+    this.node.style.backgroundRepeat = "no-repeat"; // Evita que a imagem se repita
+    this.node.style.backgroundPosition = "center";
     this.speed = 3;
   }
   automaticMovement() {

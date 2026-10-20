@@ -5,9 +5,9 @@ class Player {
     this.node.className = "player";
     //position and dimensions
     this.x = 70;
-    this.y = 230;
-    this.width = 50;
-    this.height = 50;
+    this.y = 340;
+    this.width = 48;
+    this.height = 70;
     this.node.style.position = "absolute";
     this.node.style.top = `${this.y}px`;
     this.node.style.left = `${this.x}px`;
@@ -15,12 +15,17 @@ class Player {
     // Shape and style
     this.node.style.width = `${this.width}px`;
     this.node.style.height = `${this.height}px`;
-    this.node.style.backgroundColor = "blue";
+    this.node.style.backgroundImage =
+      "url('./../img/Knight/rotations/east.png')";
+    this.node.style.backgroundSize = "cover"; // Garante que a imagem cabe toda na div
+    this.node.style.backgroundRepeat = "no-repeat"; // Evita que a imagem se repita
+    this.node.style.backgroundPosition = "center";
+
     this.speed = 20;
   }
   moveUp() {
-    if (this.y <= 20) {
-      this.y = 20;
+    if (this.y <= 270) {
+      this.y = 270;
     }
     this.y -= this.speed;
     this.node.style.top = `${this.y}px`;
