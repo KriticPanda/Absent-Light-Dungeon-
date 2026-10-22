@@ -139,10 +139,10 @@ function gameOver() {
 }
 
 //Audio Manager
-const coinSound = new Audio("../audio/CoinEffect.mp3");
-const goblinLaught = new Audio("../audio/goblinLol.mp3");
-const BgMusic = new Audio("../audio/BgMusic.mp3");
-const GameOverSound = new Audio("../audio/gameoversound.mp3");
+const coinSound = new Audio("./audio/CoinEffect.mp3");
+const goblinLaught = new Audio("./audio/goblinLol.mp3");
+const BgMusic = new Audio("./audio/BgMusic.mp3");
+const GameOverSound = new Audio("./audio/gameoversound.mp3");
 
 //Volume Regulator
 BgMusic.volume = 0.4;

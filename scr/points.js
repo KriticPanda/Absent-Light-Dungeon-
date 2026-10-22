@@ -17,7 +17,7 @@ class Gold {
     this.node.style.width = `${this.width}px`;
     this.node.style.height = `${this.height}px`;
     this.node.style.backgroundImage =
-      "url('../img/BagOfGoldCoins/A_small_bag_of_gold_coins/rotations/A_small_bag_of_gold_coins.png')";
+      "url('./img/BagOfGoldCoins/A_small_bag_of_gold_coins/rotations/A_small_bag_of_gold_coins.png')";
     this.node.style.backgroundSize = "contain"; // Garante que a imagem cabe toda na div
     this.node.style.backgroundRepeat = "no-repeat"; // Evita que a imagem se repita
     this.node.style.backgroundPosition = "center";
