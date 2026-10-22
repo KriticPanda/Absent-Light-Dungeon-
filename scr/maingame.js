@@ -6,6 +6,7 @@ const gameBoxNode = document.getElementById("game-box");
 const endScreen = document.getElementById("end-screen");
 const retryButton = document.getElementById("end-btn");
 const scoreTracker = document.getElementById("score");
+const finalScore = document.getElementById("finalscore");
 
 //Global Variables
 let playerObj = null;
@@ -127,7 +128,9 @@ function gameOver() {
   clearInterval(mainIntervalID);
   clearInterval(enemyIntervalID);
   playerObj.node.remove();
+  playSFX(GameOverSound);
   BgMusic.pause();
+  finalScore.innerText = `Gold Collected:${scoreCounter}`;
 
   //change screens
 
@@ -139,7 +142,16 @@ function gameOver() {
 const coinSound = new Audio("../audio/CoinEffect.mp3");
 const goblinLaught = new Audio("../audio/goblinLol.mp3");
 const BgMusic = new Audio("../audio/BgMusic.mp3");
+const GameOverSound = new Audio("../audio/gameoversound.mp3");
 
+//Volume Regulator
+BgMusic.volume = 0.4;
+BgMusic.loop = true;
+
+coinSound.volume = 0.3;
+GameOverSound.volume = 0.5;
+
+//Sound Prompt Function
 function playSFX(sound) {
   sound.currentTime = 0;
   sound.play();
