@@ -17,7 +17,7 @@ class Player {
     this.node.style.width = `${this.width}px`;
     this.node.style.height = `${this.height}px`;
     this.node.style.backgroundImage =
-      "url('./../img/Knight/rotations/east_idle.webp')";
+      "url('../img/Knight/rotations/east_idle.webp')";
     this.node.style.backgroundSize = "cover"; // Garante que a imagem cabe toda na div
     this.node.style.backgroundRepeat = "no-repeat"; // Evita que a imagem se repita
     this.node.style.backgroundPosition = "center";
