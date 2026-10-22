@@ -31,7 +31,7 @@ class Player {
     this.y -= this.speed;
     this.node.style.top = `${this.y}px`;
     this.node.style.backgroundImage =
-      "url('../img/Knight/rotations/north_front_walk_walk.webp')";
+      "url('./img/Knight/rotations/north_front_walk_walk.webp')";
   }
   moveDown() {
     if (this.y > 505) {
@@ -40,7 +40,7 @@ class Player {
     this.y += this.speed;
     this.node.style.top = `${this.y}px`;
     this.node.style.backgroundImage =
-      "url('../img/Knight/rotations/south_front_walk_walk.webp')";
+      "url('./img/Knight/rotations/south_front_walk_walk.webp')";
   }
   moveLeft() {
     if (this.x <= 20) {
@@ -49,7 +49,7 @@ class Player {
     this.x -= this.speed;
     this.node.style.left = `${this.x}px`;
     this.node.style.backgroundImage =
-      "url('../img/Knight/rotations/west_front_walk_walk.webp')";
+      "url('./img/Knight/rotations/west_front_walk_walk.webp')";
   }
 
   moveRight() {
@@ -59,22 +59,22 @@ class Player {
     this.x += this.speed;
     this.node.style.left = `${this.x}px`;
     this.node.style.backgroundImage =
-      "url('../img/Knight/rotations/east_front_walk_walk.webp')";
+      "url('./img/Knight/rotations/east_front_walk_walk.webp')";
   }
   stopRight() {
     this.node.style.backgroundImage =
-      "url('./../img/Knight/rotations/east_idle.webp')";
+      "url('./img/Knight/rotations/east_idle.webp')";
   }
   stopLeft() {
     this.node.style.backgroundImage =
-      "url('./../img/Knight/rotations/west_idle.webp')";
+      "url('./img/Knight/rotations/west_idle.webp')";
   }
   stopDown() {
     this.node.style.backgroundImage =
-      "url('./../img/Knight/rotations/south_idle.webp')";
+      "url('./img/Knight/rotations/south_idle.webp')";
   }
   stopUp() {
     this.node.style.backgroundImage =
-      "url('./..//img/Knight/rotations/north_idle.webp')";
+      "url('./img/Knight/rotations/north_idle.webp')";
   }
 }
