@@ -31,7 +31,7 @@ class Player {
     this.y -= this.speed;
     this.node.style.top = `${this.y}px`;
     this.node.style.backgroundImage =
-      "url('./../img/Knight/rotations/north_front_walk_walk.webp')";
+      "url('../img/Knight/rotations/north_front_walk_walk.webp')";
   }
   moveDown() {
     if (this.y > 505) {
