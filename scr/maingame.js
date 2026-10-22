@@ -21,6 +21,7 @@ function gameStart() {
   startScreen.style.display = "none";
   endScreen.style.display = "none";
   gameScreen.style.display = "flex";
+  playSFX(BgMusic);
   enemiesArray.forEach((enemy) => {
     enemy.node.remove();
   });
@@ -108,6 +109,7 @@ function checkCollisionGoldPlayer() {
       goldLoot.splice(i, 1);
       scoreCounter += 10; //
       scoreTracker.innerText = `Your current gold:${scoreCounter}`;
+      playSFX(coinSound);
     }
   }
 }
@@ -125,11 +127,22 @@ function gameOver() {
   clearInterval(mainIntervalID);
   clearInterval(enemyIntervalID);
   playerObj.node.remove();
+  BgMusic.pause();
 
   //change screens
 
   gameScreen.style.display = "none";
   endScreen.style.display = "flex";
+}
+
+//Audio Manager
+const coinSound = new Audio("../audio/CoinEffect.mp3");
+const goblinLaught = new Audio("../audio/goblinLol.mp3");
+const BgMusic = new Audio("../audio/BgMusic.mp3");
+
+function playSFX(sound) {
+  sound.currentTime = 0;
+  sound.play();
 }
 
 //Event Listeners
@@ -138,11 +151,9 @@ retryButton.addEventListener("click", gameStart);
 
 window.addEventListener("keydown", (event) => {
   if (event.code === "ArrowUp") {
-    //move up
-    playerObj.moveUp(); // calls the method on created on the player JS file
+    playerObj.moveUp();
   } else if (event.code === "ArrowDown") {
-    // move player down
-    playerObj.moveDown(); // calls the method on created on the player JS file
+    playerObj.moveDown();
   } else if (event.code === "ArrowLeft") {
     playerObj.moveLeft();
   } else if (event.code === "ArrowRight") {
@@ -150,7 +161,7 @@ window.addEventListener("keydown", (event) => {
   }
   window.addEventListener("keyup", (event) => {
     if (event.key === "ArrowRight" || event.key === "d") {
-      playerObj.stopRight(); // Chama a função que criámos acima para voltar ao idle
+      playerObj.stopRight();
     } else if (event.code === "ArrowLeft") {
       playerObj.stopLeft();
     } else if (event.code === "ArrowDown") {

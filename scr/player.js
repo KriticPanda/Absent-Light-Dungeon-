@@ -34,8 +34,8 @@ class Player {
       "url('./../img/Knight/rotations/north_front_walk_walk.webp')";
   }
   moveDown() {
-    if (this.y > 530) {
-      this.y = 530;
+    if (this.y > 505) {
+      this.y = 505;
     }
     this.y += this.speed;
     this.node.style.top = `${this.y}px`;
